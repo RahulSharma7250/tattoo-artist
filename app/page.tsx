@@ -7,7 +7,7 @@ import Image from "next/image"
 
 export default function HomePage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [isMuted, setIsMuted] = useState(false)
+  const [isMuted, setIsMuted] = useState(false) // Start unmuted
   const videoRef = useRef<HTMLVideoElement>(null)
 
   // Mouse position tracking
@@ -19,48 +19,43 @@ export default function HomePage() {
     return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [])
 
-  // Video initialization and seamless loop handling
+  // Video autoplay handling
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
 
-    // Configure video for seamless playback
-    video.muted = false
-    video.loop = true
-
-    // Workaround for Chrome's audio context restrictions
-    const handleFirstInteraction = () => {
-      video.play().catch(e => console.log("Playback attempt:", e))
-      document.removeEventListener('click', handleFirstInteraction)
-      document.removeEventListener('touchstart', handleFirstInteraction)
-    }
-
-    // Attempt initial play
-    const playPromise = video.play()
-
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        // If autoplay fails, set up interaction listeners
-        document.addEventListener('click', handleFirstInteraction)
-        document.addEventListener('touchstart', handleFirstInteraction)
-      })
-    }
-
-    // Seamless loop technique to prevent audio gaps
-    const handleTimeUpdate = () => {
-      // When 0.5 seconds from end, restart immediately
-      if (video.currentTime > video.duration - 0.5) {
-        video.currentTime = 0
-        video.play().catch(e => console.log("Loop playback error:", e))
+    const tryAutoplay = async () => {
+      try {
+        video.muted = false
+        await video.play()
+        setIsMuted(false)
+        console.log("Autoplay with sound succeeded")
+      } catch (err) {
+        console.log("Autoplay with sound blocked, trying muted")
+        video.muted = true
+        await video.play()
+        setIsMuted(true)
       }
     }
 
-    video.addEventListener('timeupdate', handleTimeUpdate)
+    tryAutoplay()
+
+    // Try to unmute after user interaction
+    const handleInteraction = () => {
+      if (video.muted) {
+        video.muted = false
+        video.play().then(() => setIsMuted(false))
+      }
+      document.removeEventListener('click', handleInteraction)
+      document.removeEventListener('touchstart', handleInteraction)
+    }
+
+    document.addEventListener('click', handleInteraction)
+    document.addEventListener('touchstart', handleInteraction)
 
     return () => {
-      video.removeEventListener('timeupdate', handleTimeUpdate)
-      document.removeEventListener('click', handleFirstInteraction)
-      document.removeEventListener('touchstart', handleFirstInteraction)
+      document.removeEventListener('click', handleInteraction)
+      document.removeEventListener('touchstart', handleInteraction)
     }
   }, [])
 
@@ -69,6 +64,13 @@ export default function HomePage() {
       videoRef.current.muted = !videoRef.current.muted
       setIsMuted(videoRef.current.muted)
     }
+  }
+
+  const handleVideoClick = () => {
+    if (!videoRef.current) return
+    videoRef.current.paused 
+      ? videoRef.current.play().catch(e => console.log("Play failed:", e))
+      : videoRef.current.pause()
   }
 
   const navigationItems = [
@@ -90,26 +92,27 @@ export default function HomePage() {
         }}
       />
 
-      {/* Video Background with seamless loop */}
+      {/* Fullscreen Video Background */}
       <video
         ref={videoRef}
         autoPlay
         loop
-        muted={false}
         playsInline
+        muted={isMuted}
+        onClick={handleVideoClick}
         className="fixed inset-0 w-full h-full object-cover z-0"
-        preload="auto" // Ensure full video loads
       >
         <source src="/tattoo-vid.mp4" type="video/mp4" />
         <source src="/tattoo-vid.webm" type="video/webm" />
       </video>
 
-      {/* Rest of your component remains the same */}
+      {/* Main Content */}
       <div className="relative z-20 flex flex-col items-center justify-center min-h-screen">
+        {/* Logo */}
         <div className="mb-8 w-32 h-32 relative">
           <Image
             src="/logo1.png"
-            alt="Red Ritual Ink Logo"
+            alt="Logo"
             width={128}
             height={128}
             className="object-contain"
@@ -117,6 +120,7 @@ export default function HomePage() {
           />
         </div>
 
+        {/* Navigation Menu */}
         <nav className="space-y-6 text-center">
           {navigationItems.map((item) => (
             <Link
@@ -131,27 +135,36 @@ export default function HomePage() {
           ))}
         </nav>
 
+        {/* Bottom Bar */}
         <div className="absolute bottom-8 left-0 right-0 flex justify-between items-center px-8">
+          {/* Mute/Unmute Button */}
           <button
             onClick={toggleMute}
             className="flex items-center gap-2 group"
-            title={isMuted ? "Unmute" : "Mute"}
+            aria-label={isMuted ? "Unmute" : "Mute"}
           >
             {isMuted ? (
-              <VolumeX className="w-5 h-5 text-white group-hover:text-red-500" />
+              <VolumeX className="w-5 h-5 text-white group-hover:text-red-500 transition-colors" />
             ) : (
-              <Volume2 className="w-5 h-5 text-white group-hover:text-red-500" />
+              <Volume2 className="w-5 h-5 text-white group-hover:text-red-500 transition-colors" />
             )}
-            <span className="text-xs font-mono">
+            <span className="text-xs font-mono hidden sm:inline">
               {isMuted ? "MUTED" : "UNMUTED"}
             </span>
           </button>
 
-          <a href="#" className="hover:text-red-500 transition-colors">
+          {/* Instagram */}
+          <a 
+            href="https://instagram.com/yourprofile" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hover:text-red-500 transition-colors"
+          >
             <Instagram className="w-5 h-5" />
           </a>
 
-          <div className="text-xs font-mono opacity-0">© 2024</div>
+          {/* Copyright */}
+          <div className="text-xs font-mono">© {new Date().getFullYear()}</div>
         </div>
       </div>
     </div>
