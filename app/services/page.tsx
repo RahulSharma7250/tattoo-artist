@@ -47,28 +47,24 @@ export default function ServicesPage() {
       icon: <Skull className="w-12 h-12" />,
       title: "Custom Tattoos",
       description: "Unique designs tailored to your vision and story, from concept to completion.",
-      price: "Starting at $200",
       features: ["Personal consultation", "Custom design", "Multiple sessions if needed", "Aftercare guidance"],
     },
     {
       icon: <Flame className="w-12 h-12" />,
       title: "Cover-ups",
       description: "Transform old tattoos into stunning new artwork, seamlessly blending the past with the present.",
-      price: "Starting at $300",
       features: ["Design assessment", "Color matching", "Strategic placement", "Complete transformation"],
     },
     {
       icon: <Star className="w-12 h-12" />,
       title: "Touch-ups & Reworks",
       description: "Refresh and restore your existing tattoos, bringing new life to faded or aged pieces.",
-      price: "Starting at $100",
       features: ["Color restoration", "Line enhancement", "Detail improvement", "Aging prevention"],
     },
     {
       icon: <Palette className="w-12 h-12" />,
       title: "Consultation",
       description: "Professional advice on design, placement, and tattoo care before you commit.",
-      price: "Free",
       features: ["Design discussion", "Placement advice", "Size recommendations", "Timeline planning"],
     },
   ]
@@ -103,7 +99,7 @@ export default function ServicesPage() {
           className="w-full h-full object-cover"
           poster="/placeholder.svg?height=1080&width=1920"
         >
-          <source src="/bg.mp4" type="video/mp4" />
+          <source src="/backg.mp4" type="video/mp4" />
           <source src="/services-bg.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
@@ -125,24 +121,26 @@ export default function ServicesPage() {
 
       {/* Header */}
       <header className="fixed top-0 w-full z-40 bg-black/80 backdrop-blur-sm border-b border-red-500/20">
-  <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-    <Link href="/" className="flex items-center space-x-2 text-red-500 hover:text-red-400 transition-colors">
-      <ArrowLeft className="w-5 h-5" />
-      <span className="font-bold">BACK</span>
-    </Link>
-    <div className="flex items-center space-x-2">
-      <div className="relative w-12 h-12"> {/* Increased from w-8 h-8 to w-12 h-12 */}
-        <Image
-          src="/logo1.png"
-          alt="Red Ritual Ink Logo"
-          width={80}  // Increased from 60 to 80
-          height={80} // Increased from 60 to 80
-          className="opacity-80 hover:opacity-100 transition-opacity duration-300"
-        />              
-      </div>
-    </div>
-  </div>
-</header>
+        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+          <Link href="/" className="flex items-center space-x-2 text-red-500 hover:text-red-400 transition-colors">
+            <ArrowLeft className="w-5 h-5" />
+            <span className="font-bold">BACK</span>
+          </Link>
+          <div className="flex items-center space-x-2">
+            <div className="relative w-12 h-12">
+              {" "}
+              {/* Increased from w-8 h-8 to w-12 h-12 */}
+              <Image
+                src="/logo1.png"
+                alt="Red Ritual Ink Logo"
+                width={80} // Increased from 60 to 80
+                height={80} // Increased from 60 to 80
+                className="opacity-80 hover:opacity-100 transition-opacity duration-300"
+              />
+            </div>
+          </div>
+        </div>
+      </header>
 
       {/* Services Section */}
       <section className="pt-28 sm:pt-32 pb-16 sm:pb-20 relative z-10">
@@ -188,9 +186,6 @@ export default function ServicesPage() {
                 <p className="text-sm sm:text-base text-gray-200 mb-4 sm:mb-6 leading-relaxed text-center">
                   {service.description}
                 </p>
-                <div className="text-red-500 font-bold text-lg sm:text-xl mb-4 sm:mb-6 text-center">
-                  {service.price}
-                </div>
                 <ul className="space-y-1 sm:space-y-2">
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="text-sm sm:text-base text-gray-200 flex items-center">
@@ -231,8 +226,8 @@ export default function ServicesPage() {
           </div>
 
           {/* Pricing Information */}
-          <div className="bg-black/40 backdrop-blur-sm border-2 border-red-500/30 p-4 sm:p-6 md:p-8 mb-16 sm:mb-20 scroll-reveal opacity-0 translate-y-[50px] transition-all duration-1000 delay-500 relative group hover:border-red-500/60 rounded-lg mx-4 sm:mx-0">
-            {/* Corner accents - responsive */}
+          {/* <div className="bg-black/40 backdrop-blur-sm border-2 border-red-500/30 p-4 sm:p-6 md:p-8 mb-16 sm:mb-20 scroll-reveal opacity-0 translate-y-[50px] transition-all duration-1000 delay-500 relative group hover:border-red-500/60 rounded-lg mx-4 sm:mx-0">
+            
             <div className="absolute top-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-t-4 border-l-4 border-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="absolute top-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-t-4 border-r-4 border-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100" />
             <div className="absolute bottom-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-b-4 border-l-4 border-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200" />
@@ -259,7 +254,7 @@ export default function ServicesPage() {
                 </ul>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Call to Action */}
           <div className="text-center scroll-reveal opacity-0 translate-y-[50px] transition-all duration-1000 delay-700">
@@ -270,7 +265,7 @@ export default function ServicesPage() {
               </p>
               <Link
                 href="/contact"
-                className="inline-block bg-red-600 hover:bg-red-700 text-white font-bold text-sm sm:text-base py-3 sm:py-4 px-6 sm:px-8 border-2 border-red-500 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/50 tracking-wide rounded"
+                className="inline-block bg-red-600 hover:bg-red-700 text-white font-bold text-xs sm:text-sm py-2 sm:py-3 px-4 sm:px-6 border-2 border-red-500 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/50 tracking-wide rounded"
               >
                 BOOK CONSULTATION
               </Link>

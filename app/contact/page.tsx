@@ -119,7 +119,7 @@ export default function ContactPage() {
           className="w-full h-full object-cover"
           poster="/placeholder.svg?height=1080&width=1920"
         >
-          <source src="/bg.mp4" type="video/mp4" />
+          <source src="/backg.mp4" type="video/mp4" />
           <source src="/contact-bg.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>

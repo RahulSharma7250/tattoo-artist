@@ -54,7 +54,7 @@ export default function PortfolioPage() {
       id: 2,
       category: "Traditional",
       type: "video",
-      media: "/tatoo1.mp4",
+      media: "/tatto.mp4",
     },
     {
       id: 3,
@@ -66,13 +66,13 @@ export default function PortfolioPage() {
       id: 4,
       category: "Neo-Traditional",
       type: "video",
-      media: "/shading.mp4",
+      media: "/shade.mp4",
     },
     {
       id: 5,
       category: "Geometric",
       type: "image",
-      media: "/leg4.jpg?height=900&width=600&text=Geometric+Design",
+      media: "/cat-tattoo.jpg?height=900&width=600&text=Geometric+Design",
     },
 
     {
@@ -95,7 +95,7 @@ export default function PortfolioPage() {
           className="w-full h-full object-cover"
           poster="/placeholder.svg?height=1080&width=1920"
         >
-          <source src="/bg.mp4" type="video/mp4" />
+          <source src="/backg.mp4" type="video/mp4" />
           <source src="/portfolio-bg.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>

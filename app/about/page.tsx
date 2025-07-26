@@ -63,7 +63,7 @@ export default function AboutPage() {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="/bg.mp4" type="video/mp4" />
+          <source src="/backg.mp4" type="video/mp4" />
           <source src="/bg.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
@@ -143,7 +143,7 @@ export default function AboutPage() {
               <div className="relative group max-w-sm mx-auto">
                 <div className="relative overflow-hidden  transition-all duration-300">
                   <Image
-                    src="/ta1.jpg?height=400&width=280"
+                    src="/artist.jpg?height=400&width=280"
                     alt="Dharmendra Singh - Tattoo Artist"
                     width={280}
                     height={400}

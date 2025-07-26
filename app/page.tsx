@@ -103,7 +103,6 @@ export default function HomePage() {
         className="fixed inset-0 w-full h-full object-cover z-0"
       >
         <source src="/tattoo-vid.mp4" type="video/mp4" />
-        <source src="/tattoo-vid.webm" type="video/webm" />
       </video>
 
       {/* Main Content */}
@@ -155,7 +154,7 @@ export default function HomePage() {
 
           {/* Instagram */}
           <a 
-            href="https://instagram.com/yourprofile" 
+            href="https://instagram.com/redritual.ink" 
             target="_blank" 
             rel="noopener noreferrer"
             className="hover:text-red-500 transition-colors"
