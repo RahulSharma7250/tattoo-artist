@@ -48,7 +48,7 @@ export default function PortfolioPage() {
       id: 1,
       category: "Realism",
       type: "image",
-      media: "/hand8.jpg?height=900&width=600&text=Realistic+Tattoo",
+      media: "/hand3.jpg?height=900&width=600&text=Realistic+Tattoo",
     },
     {
       id: 2,
