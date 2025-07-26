@@ -169,7 +169,6 @@ export default function AboutPage() {
   </p>
               <div className="flex flex-wrap gap-3">
                 {[
-                  "Award Winner",
                   "Custom Designs",
                   "Sterile Environment",
                   "Client-Focused",
