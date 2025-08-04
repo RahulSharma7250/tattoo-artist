@@ -177,24 +177,40 @@ export default function ContactPage() {
               <div className="bg-black/40 backdrop-blur-sm border border-red-500/30 p-8 rounded-lg">
                 <h2 className="text-3xl font-bold mb-8 text-red-500 tracking-wide heading-text">CONTACT INFO</h2>
                 <div className="space-y-6 mb-12">
-                  {[
-                    { icon: <Phone className="w-6 h-6" />, label: "Phone", text: "+919536586958"},
-                    { icon: <Mail className="w-6 h-6" />, label: "Email", text: "redritual.ink@gmail.com" },
-                    { icon: <MapPin className="w-6 h-6" />, label: "Address", text: "Pune" },
-                    { icon: <Clock className="w-6 h-6" />, label: "Hours", text: "Mon-Sat: 12PM-8PM" },
-                    { icon: <Instagram className="w-6 h-6" />, label: "Instagram", text: "@redritual.ink" },
-                  ].map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex items-start space-x-4 text-gray-200 hover:text-red-500 transition-colors duration-300"
-                    >
-                      <div className="text-red-500 mt-1">{item.icon}</div>
-                      <div>
-                        <div className="text-white font-semibold mb-1 paragraph-text">{item.label}</div>
-                        <div className="text-lg paragraph-text">{item.text}</div>
-                      </div>
-                    </div>
-                  ))}
+{[
+  { icon: <Phone className="w-6 h-6" />, label: "Phone", text: "+919536586958"},
+  { icon: <Mail className="w-6 h-6" />, label: "Email", text: "redritual.ink@gmail.com" },
+  { icon: <MapPin className="w-6 h-6" />, label: "Address", text: "Pune" },
+  { icon: <Clock className="w-6 h-6" />, label: "Hours", text: "Mon-Sat: 12PM-8PM" },
+  { 
+    icon: <Instagram className="w-6 h-6" />, 
+    label: "Instagram", 
+    text: "@redritual.ink",
+    link: "https://instagram.com/redritual.ink" 
+  },
+].map((item, index) => (
+  <div
+    key={index}
+    className="flex items-start space-x-4 text-gray-200 hover:text-red-500 transition-colors duration-300"
+  >
+    <div className="text-red-500 mt-1">{item.icon}</div>
+    <div>
+      <div className="text-white font-semibold mb-1 paragraph-text">{item.label}</div>
+      {item.link ? (
+        <a 
+          href={item.link} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="text-lg paragraph-text hover:underline"
+        >
+          {item.text}
+        </a>
+      ) : (
+        <div className="text-lg paragraph-text">{item.text}</div>
+      )}
+    </div>
+  </div>
+))}
                 </div>
 
                 {/* Studio Hours */}
@@ -292,7 +308,7 @@ export default function ContactPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      placeholder="(555) 123-4567"
+                      placeholder="1234567890"
                       className="w-full p-4 bg-black/50 backdrop-blur-sm border border-red-500/20 text-white placeholder-gray-400 focus:border-red-500 focus:outline-none transition-colors duration-300 rounded"
                     />
                   </div>
