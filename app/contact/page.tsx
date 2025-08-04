@@ -178,9 +178,9 @@ export default function ContactPage() {
                 <h2 className="text-3xl font-bold mb-8 text-red-500 tracking-wide heading-text">CONTACT INFO</h2>
                 <div className="space-y-6 mb-12">
                   {[
-                    { icon: <Phone className="w-6 h-6" />, label: "Phone", text: "+1 (555) 123-4567" },
-                    { icon: <Mail className="w-6 h-6" />, label: "Email", text: "info@redritual.ink" },
-                    { icon: <MapPin className="w-6 h-6" />, label: "Address", text: "123 Ink Street, Art District" },
+                    { icon: <Phone className="w-6 h-6" />, label: "Phone", text: "+919536586958"},
+                    { icon: <Mail className="w-6 h-6" />, label: "Email", text: "redritual.ink@gmail.com" },
+                    { icon: <MapPin className="w-6 h-6" />, label: "Address", text: "Pune" },
                     { icon: <Clock className="w-6 h-6" />, label: "Hours", text: "Mon-Sat: 12PM-8PM" },
                     { icon: <Instagram className="w-6 h-6" />, label: "Instagram", text: "@redritual.ink" },
                   ].map((item, index) => (

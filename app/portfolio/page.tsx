@@ -46,38 +46,38 @@ export default function PortfolioPage() {
   const portfolioItems = [
     {
       id: 1,
-      category: "Realism",
+      
       type: "image",
       media: "/hand8.JPG?height=900&width=600&text=Realistic+Tattoo",
     },
     {
       id: 2,
-      category: "Traditional",
+      
       type: "video",
       media: "/tatto.mp4",
     },
     {
       id: 3,
-      category: "Blackwork",
+      
       type: "image",
-      media: "/leg2.JPG?height=900&width=600&text=Blackwork+Tattoo",
+      media: "/sel.jpg?height=900&width=600&text=Blackwork+Tattoo",
     },
     {
       id: 4,
-      category: "Neo-Traditional",
+      
       type: "video",
       media: "/shade.mp4",
     },
     {
       id: 5,
-      category: "Geometric",
+      
       type: "image",
       media: "/cat-tattoo.jpg?height=900&width=600&text=Geometric+Design",
     },
 
     {
       id: 6,
-      category: "Japanese",
+      
       type: "image",
       media: "/hand3.jpg?height=900&width=600&text=Japanese+Style",
     },
@@ -177,7 +177,7 @@ export default function PortfolioPage() {
                   {item.type === "image" ? (
                     <Image
                       src={item.media || "/placeholder.svg"}
-                      alt={`Tattoo ${item.category}`}
+                      alt=""
                       width={600}
                       height={900}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 group-hover:contrast-110"
@@ -198,11 +198,11 @@ export default function PortfolioPage() {
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                  <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {/* <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <Badge className="bg-red-600 text-white border-0 font-bold tracking-wider text-xs sm:text-sm">
                       {item.category} {item.type === "video" && "• VIDEO"}
                     </Badge>
-                  </div>
+                  </div> */}
 
                   {/* Glitch effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-500/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
